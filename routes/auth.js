@@ -1,23 +1,26 @@
 const express = require("express");
-const passport = require('passport');
+const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
-
+const randToken = require("rand-token");
+const transporter = require("../configs/nodemailer.config");
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+  res.render("auth/login", { message: req.flash("error") });
 });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
@@ -26,8 +29,10 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  const email = req.body.email;
+
+  if (username === "" || password === "" || email === "") {
+    res.render("auth/signup", { message: "Indicate all fields" });
     return;
   }
 
@@ -39,19 +44,30 @@ router.post("/signup", (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    const token = randToken.generate(25);
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email,
+      token
     });
 
-    newUser.save()
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
-    })
+    newUser.save().then(() => {
+      transporter
+        .sendMail({
+          from: `'youCook Team' <${process.env.GMAIL_USER}>`,
+          to: email,
+          subject: `Welcome ${username}`,
+          html: `<a href="http://localhost:3000/auth/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
+        })
+        .then(() => {
+          res.redirect("/");
+        })
+        .catch(err => {
+          res.render("auth/signup", { message: "Something went wrong" });
+        });
+    });
   });
 });
 
