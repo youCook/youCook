@@ -71,6 +71,7 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
+
 app.use(flash());
 require('./passport')(app);
     
@@ -78,8 +79,8 @@ require('./passport')(app);
 const index = require('./routes/index');
 app.use('/', index);
 
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+// const authRoutes = require('./routes/auth');
+// app.use('/auth', authRoutes);
       
 
 module.exports = app;

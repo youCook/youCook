@@ -4,12 +4,15 @@ const router = express.Router();
 const User = require("../models/User");
 const randToken = require("rand-token");
 const transporter = require("../configs/nodemailer.config");
+const secure = require('../middlewares/secure.mid');
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { message: req.flash("error") });
+  const user= req.user;
+  res.render("auth/login", { user, message: req.flash("error") });
 });
 
 router.post(
@@ -23,7 +26,8 @@ router.post(
 );
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  const user= req.user;
+  res.render("auth/signup", {user});
 });
 
 router.post("/signup", (req, res, next) => {
@@ -76,4 +80,24 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/profile",
+    failureRedirect: "/login"
+  })
+);
+
+router.get('/profile', secure.checkLogin, (req, res, next) => {
+  res.render('auth/profile', { user: req.user });
+});
 module.exports = router;

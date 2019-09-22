@@ -6,16 +6,16 @@ const userSchema = new Schema(
     username: {
       type: String,
       unique: true,
-      required: true
+      // required: true
     },
     password: {
       type: String,
-      required: true
+      // required: true
     },
     email: {
       type: String,
       // unique: true,
-      required: true
+      // required: true
     },
     imgName: {
       type: String,
@@ -28,13 +28,13 @@ const userSchema = new Schema(
     },
     token: {
       type: String,
-      unique: true
+      // unique: true,
     },
     active: {
       type: Boolean,
       default: false
     },
-    googleId: {
+    googleID: {
       type: String
     }
   },

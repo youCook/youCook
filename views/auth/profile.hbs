@@ -1,0 +1,9 @@
+Private page
+{{#if user}}
+  <div>
+    <img src="{{user.imgPath}}" alt="Profile photo">
+    Hello {{user.username}} 🚀
+    <a href="/">Index</a>
+    <a href="/logout">Logout</a>
+  </div>
+{{/if}}

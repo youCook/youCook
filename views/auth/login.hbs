@@ -1,5 +1,6 @@
-
+{{#unless user}}
 <h2>Login</h2>
+{{user.username}}
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
@@ -20,6 +21,14 @@
 
   <p class="account-message">
     Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
+    <a href="/signup">Signup</a>
   </p>
 </form>
+  <div>
+    <a href="/auth/google">Login With Google</a>
+  </div>
+{{/unless}}
+{{#if user}}
+  <h2>You are logged in, {{user.username}}</h2>
+{{/if}}
+
