@@ -49,7 +49,7 @@ router.post("/post/:id/edit", checker.checkLogin, (req, res) => {
     .catch(error => next(error));
 });
 
-router.get("/create", (req, res, next) => {
+router.get("/create", checker.checkLogin, (req, res, next) => {
   const user = req.user
   res.render("posts/create", {user});
 });

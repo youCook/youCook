@@ -16,8 +16,7 @@ router.get("/login", (req, res, next) => {
   res.render("auth/login", { user, message: req.flash("error") });
 });
 
-router.post(
-  "/login",
+router.post("/login",
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/auth/login",
@@ -64,7 +63,7 @@ router.post("/signup", (req, res, next) => {
           from: `'youCook Team' <${process.env.GMAIL_USER}>`,
           to: email,
           subject: `Welcome ${username}`,
-          html: `<a href="http://localhost:3000/auth/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
+          html: `<a href="http://localhost:3000/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
         })
         .then(() => {
           res.redirect("/");
@@ -74,6 +73,19 @@ router.post("/signup", (req, res, next) => {
         });
     });
   });
+});
+
+router.get("/confirm/:token", (req, res) => {
+  User.findOneAndUpdate({token:req.params.token},{$set:{active: true}},{new: true})
+  .then((user)=>{
+    res.render("auth/activationSuccess",{user})
+  }).catch(()=>{  
+    console.log("Error de activacion")
+  })
+})
+
+router.get("/checkmail", (req, res, next) => {
+  res.render("auth/checkmail", { message: req.flash("error") });
 });
 
 router.get("/logout", (req, res) => {
