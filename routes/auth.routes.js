@@ -4,7 +4,8 @@ const router = express.Router();
 const User = require("../models/User");
 const randToken = require("rand-token");
 const transporter = require("../configs/nodemailer.config");
-const secure = require('../middlewares/secure.mid');
+const uploadCloud = require('../configs/cloudinary.config');
+// const secure = require('../middlewares/secure.mid');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -92,12 +93,8 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/profile",
+    successRedirect: "/user/profile",
     failureRedirect: "/login"
   })
 );
-
-router.get('/profile', secure.checkLogin, (req, res, next) => {
-  res.render('auth/profile', { user: req.user });
-});
 module.exports = router;

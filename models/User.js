@@ -17,6 +17,9 @@ const userSchema = new Schema(
       // unique: true,
       // required: true
     },
+    description:  {
+      type: String
+    },
     imgName: {
       type: String,
       default: "User"
@@ -28,7 +31,7 @@ const userSchema = new Schema(
     },
     token: {
       type: String,
-      // unique: true,
+      unique: true,
     },
     active: {
       type: Boolean,

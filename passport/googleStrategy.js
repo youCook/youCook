@@ -13,10 +13,7 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
-      // to see the structure of the data in received response:
-      console.log(profile._json.given_name)
-
-
+  
       User.findOne({ googleID: profile.id })
         .then((user) => {
           if (user) {
@@ -24,7 +21,7 @@ passport.use(
             return;
           }
 
-          User.create({ googleID: profile.id, email: profile._json.email, username: profile.name.givenName, imgPath: profile._json.picture, token: randToken.generate(25) })
+          User.create({ googleID: profile.id, email: profile._json.email, username: profile.name.givenName, imgPath: profile._json.picture, token: randToken.generate(25), active: true })
             .then((newUser) => {
               done(null, newUser);
             })
