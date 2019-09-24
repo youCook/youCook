@@ -17,11 +17,22 @@ router.get('/edit', secure.checkLogin, (req, res, next) => {
 
 router.post('/edit', uploadCloud.single('imgPath'), (req, res, next) => {
   const {_id} = req.user;
-  let {username, password, email, description, imgPath, imgName } = req.body;
-  if(req.file.url) {
+  let {username, password, email, description } = req.body;
+  if(req.file) {
     imgName= req.file.originalname;
     imgPath= req.file.url;
+    User.findByIdAndUpdate(_id,  {$set: {imgPath: imgPath, imgName: imgName}}, {new:true})
+    .then(user=> {
+      res.redirect('/user/profile');
+    }).catch(error => next(error));
   }
+  else {
+    User.findByIdAndUpdate(_id,  req.body, {new:true})
+    .then(user=> {
+      res.redirect('/user/profile');    
+    }).catch(error => next(error));
+  }
+
 
   
   console.log(imgPath)
@@ -33,6 +44,7 @@ router.post('/edit', uploadCloud.single('imgPath'), (req, res, next) => {
     res.redirect('/user/profile');
 
   })
+
 });
 
 router.get('/publicProfile/:id', (req, res, next) => {
@@ -44,5 +56,3 @@ router.get('/publicProfile/:id', (req, res, next) => {
 });
 
 module.exports = router;
-
-// , password, email, imgPath
