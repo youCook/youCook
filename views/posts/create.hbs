@@ -1,0 +1,25 @@
+<div>
+  <h1>Create a Post</h1>
+
+<form action="/post/create" method="post" enctype="multipart/form-data">
+
+  <div>
+    <label for="picName">Title:</label>
+    <input type="text" name="picName">
+  </div>
+
+  <div>
+    <label for="content">Content:</label>
+    <textarea name="content" cols="30" rows="10"></textarea>
+  </div>
+
+
+  <div>
+    <label for="picPath">Photo:</label>
+    <input type="file" name="picPath">
+  </div>
+
+
+  <button type="submit">Create Post</button>
+</form>
+</div>
