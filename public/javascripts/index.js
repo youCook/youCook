@@ -1,3 +1,4 @@
+
 const apiHandler = new APIHandler("https://api.spoonacular.com");
 
 const recipeBox = document.querySelector("#plan-container");
