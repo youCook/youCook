@@ -16,13 +16,6 @@ router.get('/profile', secure.checkLogin, (req, res, next) => {
   })
 });
 
-
-
-
-
-
-
-
 router.get('/edit', secure.checkLogin, (req, res, next) => {
   res.render('user/edit', { user: req.user });
 });
@@ -33,7 +26,7 @@ router.post('/edit', uploadCloud.single('imgPath'), (req, res, next) => {
   if(req.file) {
     imgName= req.file.originalname;
     imgPath= req.file.url;
-    User.findByIdAndUpdate(_id,  {$set: {imgPath: imgPath, imgName: imgName}}, {new:true})
+    User.findByIdAndUpdate(_id,  {imgPath: imgPath, imgName: imgName}, {new:true})
     .then(user=> {
       res.redirect('/user/profile');
     }).catch(error => next(error));
@@ -44,18 +37,6 @@ router.post('/edit', uploadCloud.single('imgPath'), (req, res, next) => {
       res.redirect('/user/profile');    
     }).catch(error => next(error));
   }
-
-
-  
-  console.log(imgPath)
-  console.log(username)
- 
-  User.findByIdAndUpdate(_id,  {$set: {username: username, email: email, password: password, description: description, imgPath: imgPath, imgName: imgName}}, {new:true})
-  .then(user=> {
-    
-    res.redirect('/user/profile');
-
-  })
 
 });
 
