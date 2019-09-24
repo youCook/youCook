@@ -28,6 +28,8 @@ class APIHandler {
   getRandomRecipe(){
     return axios.get(`${this.backURL}/planner/randomrecipe`)
   }
-
+  getRecipeSearch(string){
+    return axios.get(`${this.backURL}/planner/recipesearch/${string}`)
+  }
 
 }

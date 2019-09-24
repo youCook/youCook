@@ -1,10 +1,16 @@
 <h1>Buscador de recetas</h1>
 
+<form id="findrecipe">
+  <div>
+    <input type="text" id="recipesearch" placeholder="Search for recipies">
+  </div>
+  
+  <input type="submit" value="Go!">
+</form>
 
+<div id="searchresults">
 
-
-
-
+</div>
 
 
 
@@ -16,6 +22,7 @@
 
 {{!-- reactivar para que funcione la receta random --}}
 
-{{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/javascripts/APIHandler.js"></script>
-<script src="/javascripts/randomrecipe.js"></script> --}}
+<script src="/javascripts/recipesearch.js"></script>
+{{!-- <script src="/javascripts/randomrecipe.js"></script> --}}
