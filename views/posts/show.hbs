@@ -1,6 +1,6 @@
 <div>
   {{#if post}}
-  <h1>{{post.picName}}</h1>
+  <h1>{{post.postName}}</h1>
 
   {{#post.creatorId}}
   <div>
@@ -10,7 +10,7 @@
   {{/post.creatorId}}
 
   <div>
-    <img src="{{post.picPath}}" alt="{{post.picName}}">
+    <img src="{{post.picPath}}" alt="{{post.postName}}">
   </div>
   <p>{{post.content}}</p>
   {{/if}}
