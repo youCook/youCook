@@ -11,16 +11,16 @@ module.exports.checkLogin = (req, res, next) => {
   if (req.isAuthenticated() && req.user.active) {
     next();
   } else if (req.isAuthenticated()) {
-    res.redirect('/auth/checkmail')
+    res.redirect('/checkmail')
   } else {
     res.redirect('/login');
   }
 };
 
-// module.exports.checkRole = role => (req, res, next) => {
-//   if (req.isAuthenticated() && req.user.role === role) {
-//     next();
-//   } else {
-//     res.redirect('/');
-//   }
-// };
+module.exports.checkActive = (req, res, next) => {
+  if (req.user.active) {
+    next();
+  } else {
+    res.redirect('/checkmail');
+  }
+};
