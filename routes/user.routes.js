@@ -8,8 +8,20 @@ const uploadCloud = require('../configs/cloudinary.config');
 
 
 router.get('/profile', secure.checkLogin, (req, res, next) => {
-  res.render('user/profile', { user: req.user });
+  User.findById(req.user._id)
+  .populate('ownPosts')
+  .then(user => {
+    console.log(user);
+    res.render('user/profile', { user: user });
+  })
 });
+
+
+
+
+
+
+
 
 router.get('/edit', secure.checkLogin, (req, res, next) => {
   res.render('user/edit', { user: req.user });

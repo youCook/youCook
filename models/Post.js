@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema(
   {
     content: String,
-    creatorId: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    creatorId: { type: Schema.Types.ObjectId, ref: "User" },
     picPath: String,
-    picName: String,
+    postName: String,
     comment: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
   },
   { timestamps: true }

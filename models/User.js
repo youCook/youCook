@@ -37,6 +37,9 @@ const userSchema = new Schema(
       type: Boolean,
       default: false
     },
+    ownPosts:
+      [{ type: Schema.Types.ObjectId, ref: "Post" }]
+    ,
     googleID: {
       type: String
     }

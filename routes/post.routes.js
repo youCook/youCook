@@ -12,11 +12,14 @@ const checker = require("../middlewares/secure.mid");
 
 router.get("/", (req, res, next) => {
   Post.find()
+    .populate("creatorId")
     .then(posts => {
+      console.log(posts)
       res.render("index", { posts, user: req.user });
     })
     .catch(error => next(error));
 });
+
 
 
 router.get("/post-info/:id", (req, res, next) => {
@@ -54,17 +57,21 @@ router.post("/post-info/:id/edit", checker.checkLogin, (req, res) => {
 });
 
 router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
-  const { content, picName } = req.body;
+  const { content, postName } = req.body;
   const { url } = req.file;
 
   const newPost = new Post({
     content,
     creatorId: req.user._id,
-    picName: picName,
+    postName: postName,
     picPath: url,
   });
   newPost.save()
-    .then(() => { res.redirect('/')})
+    .then((post) => { 
+      User.findByIdAndUpdate(req.user._id,{$push:{ownPosts:post._id}},{new:true})
+      .then((us)=>{
+        res.redirect('/')})
+      })
     .catch(error => next(error));
 });
 
