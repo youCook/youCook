@@ -4,8 +4,21 @@ const router = express.Router();
 const axios = require("axios");
 
 router.get('/', (req, res, next) => {
-  res.render('planner/search', { user: req.user });
+  res.render('planner/planner', { user: req.user });
 });
+
+router.get('/findrecipes', (req, res, next)=>{
+  res.render('planner/findrecipes')
+})
+
+router.get('/recipesearch/:search', (req, res, next) => {
+  console.log("hola")
+  axios.get(`https://api.spoonacular.com/recipes/search?query=${req.params.search}&apiKey=${process.env.API_KEY}`)
+  .then(response=> {
+    console.log(response)
+    res.json(response.data)
+  })
+})
 
 
 router.get("/search/:cal/:diet/:allergies", (req, res, next) => {
@@ -42,8 +55,19 @@ router.get("/recipes/instructions/:id", (req, res, next) => {
   })
 });
 
+router.get("/randomjoke", (req, res, next)=> {
+  axios.get(`https://api.spoonacular.com/food/jokes/random?apiKey=${process.env.API_KEY}`)
+  .then(response=> {
+    res.json(response.data)
+  })
+})
 
-
+router.get("/randomrecipe", (req, res, next)=> {
+  axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.API_KEY}`)
+  .then(response => {
+    res.json(response.data)
+  })
+})
 
 
 module.exports = router;

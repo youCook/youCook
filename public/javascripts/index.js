@@ -1,4 +1,3 @@
-
 const apiHandler = new APIHandler();
 
 const recipeBox = document.querySelector("#plan-container");
@@ -67,7 +66,6 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
         const id = document.querySelector("#breakfast-id-link").value;
         const name = document.querySelector("#breakfast-id-name").value;
         apiHandler.getRecipeInstrucctions(id).then(res => {
-   
           const { data } = res;
           recipeContainer.innerHTML = "";
           recipeContainer.innerHTML += `
@@ -76,10 +74,8 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
           <ol id="steps-container"></ol>
           `;
 
-          const stepsContainer = document.querySelector(
-            "#steps-container"
-          );
-            // let container=0;
+          const stepsContainer = document.querySelector("#steps-container");
+          // let container=0;
           data[0].steps.forEach(steps => {
             // console.log(steps);
             stepsContainer.innerHTML += `
@@ -89,25 +85,23 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
             </li>
             `;
             // <ul class="ingredients-container-${container}">
-          //   const ingredientsContainer = document.querySelector(`#ingredients-container-${container}`);
-          //   steps.ingredients.forEach(ingredient => {
-          //     console.log(ingredient);
+            //   const ingredientsContainer = document.querySelector(`#ingredients-container-${container}`);
+            //   steps.ingredients.forEach(ingredient => {
+            //     console.log(ingredient);
 
-          //     ingredientsContainer.innerHTML += `
-          //     <li>${ingredient.name}</li>
-          //   `;
+            //     ingredientsContainer.innerHTML += `
+            //     <li>${ingredient.name}</li>
+            //   `;
 
-          //   });
-          //  container++;
+            //   });
+            //  container++;
           });
-        
         });
       };
       document.querySelector("#lunch-recipe-link").onclick = function() {
         const id = document.querySelector("#lunch-id-link").value;
         const name = document.querySelector("#lunch-id-name").value;
         apiHandler.getRecipeInstrucctions(id).then(res => {
-   
           const { data } = res;
           recipeContainer.innerHTML = "";
           recipeContainer.innerHTML += `
@@ -116,9 +110,7 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
           <ol id="steps-container"></ol>
           `;
 
-          const stepsContainer = document.querySelector(
-            "#steps-container"
-          );
+          const stepsContainer = document.querySelector("#steps-container");
           data[0].steps.forEach(steps => {
             stepsContainer.innerHTML += `
             <li>
@@ -126,16 +118,13 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
             </ul>
             </li>
             `;
-       
           });
-        
         });
       };
       document.querySelector("#dinner-recipe-link").onclick = function() {
         const id = document.querySelector("#dinner-id-link").value;
         const name = document.querySelector("#dinner-id-name").value;
         apiHandler.getRecipeInstrucctions(id).then(res => {
-   
           const { data } = res;
           recipeContainer.innerHTML = "";
           recipeContainer.innerHTML += `
@@ -144,9 +133,7 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
           <ol id="steps-container"></ol>
           `;
 
-          const stepsContainer = document.querySelector(
-            "#steps-container"
-          );
+          const stepsContainer = document.querySelector("#steps-container");
           data[0].steps.forEach(steps => {
             stepsContainer.innerHTML += `
             <li>
@@ -154,11 +141,11 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
             </ul>
             </li>
             `;
-       
           });
-        
         });
       };
     })
     .catch(error => console.error(error));
 });
+
+
