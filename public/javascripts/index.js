@@ -1,5 +1,5 @@
 
-const apiHandler = new APIHandler("https://api.spoonacular.com");
+const apiHandler = new APIHandler();
 
 const recipeBox = document.querySelector("#plan-container");
 const recipeContainer = document.querySelector("#recipe-plan-container");
