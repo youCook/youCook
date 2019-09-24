@@ -3,16 +3,14 @@
 
 
 <div>
-  
-
   <ul>
     {{#each posts}}
     <li>
       <a href="/post/post-info/{{this._id}}">
         <img src="{{this.picPath}}" alt="{{this.picName}}">
       </a>
-      <h3>{{this.picName}}</h3>
-      <p>{{this.content}}</p>
+      <h3>Author: {{this.picName}}</h3>
+      <p>Content: {{this.content}}</p>
     </li>
     {{/each}}
   </ul>
