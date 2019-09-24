@@ -22,4 +22,12 @@ class APIHandler {
   getRecipeInstrucctions(id) {
     return axios.get(`${this.backURL}/planner/recipes/instructions/${id}`);
   }
+  getRandomJoke() {
+    return axios.get(`${this.backURL}/planner/randomjoke`)
+  }
+  getRandomRecipe(){
+    return axios.get(`${this.backURL}/planner/randomrecipe`)
+  }
+
+
 }
