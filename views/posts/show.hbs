@@ -12,6 +12,10 @@
   <div>
     <img src="{{post.picPath}}" alt="{{post.postName}}">
   </div>
+  <input type="hidden" id="post-id" value="{{post._id}}">`
+  <div class="likes-container"></div>
+  
+  
   <p>{{post.content}}</p>
   {{/if}}
 
@@ -29,6 +33,7 @@
       <div>
         <img src="{{authorId.imgPath}}" alt="{{authorId.username}} profile picture">
         <h4>by <a href="/user/publicprofile/{{authorId._id}}">{{authorId.username}}</a> </h4>
+        
       </div>
       <p>{{content}}</p>
     </li>
@@ -39,3 +44,4 @@
   <p>There are no comments for this entry</p>
   {{/if}}
 </div>
+  <script src="/javascripts/postShowScript.js"></script>

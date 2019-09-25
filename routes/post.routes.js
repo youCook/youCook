@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
   Post.find()
     .populate("creatorId")
     .then(posts => {
-      console.log(posts);
+      posts.sort((a, b) => Math.random() - 0.5);
       res.render("index", { posts, user: req.user });
     })
     .catch(error => next(error));
@@ -28,28 +28,25 @@ router.get("/post-info/:id", (req, res, next) => {
       });
     })
     .then(post => {
-      console.log(post);
       res.render("posts/show", { post, user: req.user });
     })
     .catch(error => next(error));
 });
 
 router.post("/post-edit/:id", checker.checkLogin, (req, res) => {
-  Post.findByIdAndUpdate(
-    req.params.id,
-    { $push: { comment: comment._id } },
-    { new: true }
-  )
-    .then(post => {
-      res.redirect("back");
-    })
-    .catch(error => next(error));
+  // Post.findByIdAndUpdate(
+  //   req.params.id,
+  //   { $push: { comment: comment._id } },
+  //   { new: true }
+  // )
+  //   .then(post => {
+  //     res.redirect("back");
+  //   })
+  //   .catch(error => next(error));
 });
+
 router.get("/post-edit/:id", checker.checkLogin, (req, res) => {
-  Post.findById(req.params.id)
-  .then(post=> {
-    res.render("/post/edit", {post})
-  })
+  Post.findById(req.params.id).then(post => res.status(200).json(post));
 });
 
 router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
@@ -60,7 +57,8 @@ router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
     content,
     creatorId: req.user._id,
     postName: postName,
-    picPath: url
+    picPath: url,
+    likes: 0
   });
   newPost
     .save()
@@ -76,9 +74,85 @@ router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
     .catch(error => next(error));
 });
 
+router.get("/all", (req, res, next) => {
+  User.findById(req.user._id)
+    .populate("ownPosts")
+    .then(data => {
+      res.json(data.ownPosts);
+    })
+    .catch(error => next(error));
+});
+
+router.post("/post-edit/update/:id/:postName/:content", (req, res, next) => {
+  let postName = "",
+    content = "";
+  if (req.params.postName != "none") {
+    postName = req.params.postName;
+  }
+  if (req.params.content != "none") {
+    content = req.params.content;
+  }
+  const id = req.params.id;
+  console.log("body es", req.body);
+
+  Post.findByIdAndUpdate(
+    id,
+    { postName: postName, content: content },
+    { new: true }
+  ).then(updated => {
+    User.findById(req.user._id)
+      .populate("ownPosts")
+      .then(data => {
+        res.json(data.ownPosts);
+      })
+      .catch(error => next(error));
+  });
+});
+
+router.get("/post-delete/:id", (req, res, next) => {
+  Post.findByIdAndDelete(req.params.id).then(() => {
+    User.findById(req.user._id)
+      .populate("ownPosts")
+      .then(data => {
+        res.json(data.ownPosts);
+      });
+  });
+});
+
 router.get("/create", checker.checkLogin, (req, res, next) => {
   const user = req.user;
   res.render("posts/create", { user });
 });
+
+router.get("/post-like/:id", (req, res, next) => {
+  Post.findById(req.params.id)
+  .then(post => {
+    res.json(post);
+  })
+})
+router.get("/post-like-plus/:id", (req, res, next) => {
+  Post.findById(req.params.id)
+  .then(post => {
+    if(post.likers.indexOf(req.user._id)>=0) {
+      return
+    }
+    let newLike = post.likes +1;
+    Post.findByIdAndUpdate(req.params.id, {likes:newLike}, { new: true })
+    .then(post => {
+      Post.findByIdAndUpdate(req.params.id, {$push: { likers: req.user._id }}, { new: true })
+      .then(post => {
+
+        res.json(post);
+      })
+
+  })
+
+
+  })
+  
+})
+
+
+
 
 module.exports = router;
