@@ -1,25 +1,30 @@
-<div>
-  <h1>Create a Post</h1>
+<div class="top-padding">
+  <h1 class="section-title">Create a Post</h1>
 
-<form action="/post/create" method="post" enctype="multipart/form-data">
+<form action="/post/create" method="post" enctype="multipart/form-data" class="input-form">
 
-  <div>
+  <div class="input-form">
     <label for="postName">Title:</label>
     <input type="text" name="postName">
   </div>
   
 
-  <div>
+  <div class="input-form">
     <label for="content">Content:</label>
     <textarea name="content" cols="30" rows="10"></textarea>
   </div>
 
 
-  <div>
+  <div class="input-form">
     <label for="picPath">Photo:</label>
     <input type="file" name="picPath">
   </div>
 
+
+  {{!-- <label class="fileContainer">
+    Click here to trigger the file uploader!
+    <input type="file"/>
+  </label> --}}
 
   <button type="submit">Create Post</button>
 </form>
