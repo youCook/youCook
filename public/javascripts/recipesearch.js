@@ -8,9 +8,6 @@ document.getElementById('findrecipe').addEventListener("submit", function(e) {
     .then(res => {
     const { data } = res;
     const searchResults = document.querySelector("#searchresults")
-   
-    // searchResults.innerHTML = "";
-
 
       data.results.forEach(recipe => {
         searchResults.innerHTML += `
