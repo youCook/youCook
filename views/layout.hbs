@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
 
-  <nav>
-    <a href="/">Home</a> ||
-    <a href="/login">Login</a> ||
-    <a href="/signup">Signup</a> ||
-    {{!-- <a href="/post">View posts</a> || --}}
-    <a href="/post/create">Create post</a> ||
-    <a href="/user/profile">User profile</a> ||
-    <a href="/logout">Logout</a>
+  <nav class="navbar">
+    {{!-- <div class="navbar-div">
+    </div> --}}
+    <div class="navbar-div">
+      <img class="navbar-logo" src="https://res.cloudinary.com/drx4q1lcn/image/upload/v1569434213/wecook/youCook_Logo_whitemini_vbqvvg.png" alt="youCook Logo">
+      <a href="/">Home</a> 
+      <a href="/login">Login</a> 
+      <a href="/signup">Signup</a>
+      <a href="/post/create">Create post</a> 
+    </div>
+    <div class="navbar-div">
+      <a href="/user/profile">User profile</a> 
+      <a href="/logout"><img class="navbar-logout" src="https://res.cloudinary.com/drx4q1lcn/image/upload/v1569434819/wecook/logout_3622_zhtnaj.png" alt="logout"></a>
+    </div>
   </nav>
 
   {{{body}}}
@@ -29,4 +38,5 @@
 
 
 </body>
+
 </html>

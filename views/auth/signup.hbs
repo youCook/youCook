@@ -1,35 +1,37 @@
-{{#unless user}}
-<h2>Signup</h2>
+<div class="top-padding">
+  {{#unless user}}
+  <h2 class="section-title">Signup</h2>
 
-<form action="/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-  <br><br>
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="JonSnow@castleblack.com">
-  <br><br>
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
+  <form action="/signup" method="POST" id="form-container" class="input-form">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username" placeholder="JonSnow">
+    
+    <label for="email">Email</label>
+    <input id="email" type="text" name="email" placeholder="JonSnow@castleblack.com">
+    
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" placeholder="Your password">
+    
+    {{#if message }}
     <div class="error-message">{{ message }}</div>
-  {{/if}}
+    {{/if}}
 
-  <br><br>
+    
 
-  <button>Create account</button>
+    <button>Create account</button>
 
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
-</form>
+    <p class="account-message">
+      Do you already have an account?
+      <a href="/login">Login</a>
+    </p>
+  </form>
 
-  <div>
+  <div class="google-signup-login">
     <a href="/auth/google">Signup With Google</a>
   </div>
-{{/unless}}
-{{#if user}}
+  {{/unless}}
+  {{#if user}}
   <h2>You are logged in, {{user.username}}</h2>
 
-{{/if}}
+  {{/if}}
+</div>

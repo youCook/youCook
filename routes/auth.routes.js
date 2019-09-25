@@ -5,6 +5,7 @@ const User = require("../models/User");
 const randToken = require("rand-token");
 const transporter = require("../configs/nodemailer.config");
 const uploadCloud = require('../configs/cloudinary.config');
+const confirmationEmail = require('../templates/template')
 // const secure = require('../middlewares/secure.mid');
 
 // Bcrypt to encrypt passwords
@@ -63,7 +64,8 @@ router.post("/signup", (req, res, next) => {
           from: `'youCook Team' <${process.env.GMAIL_USER}>`,
           to: email,
           subject: `Welcome ${username}`,
-          html: `<a href="http://localhost:3000/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
+          html: confirmationEmail(username, `<a href="https://localhost:3000/confirm/${newUser.token}"></a>`)
+          // html: `<a href="http://localhost:3000/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
         })
         .then(() => {
           res.redirect("/");
