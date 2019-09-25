@@ -3,15 +3,22 @@
 
 
 <div>
-  <ul>
+  <ul class="grid">
     {{#each posts}}
-    <li>
-      <a href="/post/post-info/{{this._id}}">
-        <img src="{{this.picPath}}" alt="{{this.postName}}">
+    <li class="item">
+
+      <a class="content" href="/post/post-info/{{this._id}}">
+        <div>
+          <div class="card">
+            <h3>Author: {{this.creatorId.username}}</h3>
+            <p>Title: {{this.postName}}</p>
+          </div>
+          <img src="{{this.picPath}}" alt="{{this.postName}}">
+        </div>
+
+        {{!-- <img src="{{this.creatorId.imgPath}}" alt="Creator profile photo"> --}}
+
       </a>
-      <img src="{{this.creatorId.imgPath}}" alt="Creator profile photo">
-      <h3>Author: {{this.creatorId.username}}</h3>
-      <p>Title: {{this.postName}}</p>
     </li>
     {{/each}}
   </ul>
@@ -21,6 +28,7 @@
 <div id="randomjoke">
 
 </div>
+
 
 {{!-- reactivar para que funcione el chiste random --}}
 
