@@ -140,6 +140,7 @@ p {
         display: grid;
         align-content: center; }
   .grid li:nth-child(1) {
+
     height: 487px; }
   .grid li:nth-child(2) {
     height: 551px; }
@@ -155,9 +156,12 @@ p {
     height: 454px; }
   .grid li:nth-child(8) {
     height: 595px; }
+
+
   .grid li:nth-child(9) {
     height: 223px; }
   .grid li:nth-child(10) {
+
     height: 511px; }
   .grid li:nth-child(11) {
     height: 488px; }
@@ -211,5 +215,7 @@ p {
     height: 209px; }
   .grid li:nth-child(36) {
     height: 285px; }
+
+ 
 
 /*# sourceMappingURL=style.css.map */
