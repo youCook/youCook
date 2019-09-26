@@ -171,12 +171,14 @@ router.get("/add-bookmark/:id", (req, res, next) => {
   }
   User.findByIdAndUpdate(req.user._id, { $push: { bookmarks: req.params.id } },{ new: true })
   .then((user) => {
+
     res.json(user.bookmarks.length);
   })
 })
 router.get("/rem-bookmark/:id", (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, { $pull: { bookmarks: req.params.id } },{ new: true })
   .then((user) => {
+
     res.json(user.bookmarks.length);
   })
 })
@@ -196,6 +198,7 @@ router.get("/show-bookmarks", (req, res, next) => {
     res.render("posts/singlerecipe", {recipeFinal: recipesArr})
   })    
 });
+
 
 router.get("/get-bookmark/:id", (req, res, next) => {
 

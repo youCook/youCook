@@ -1,27 +1,29 @@
-{{#with user}}
-<h2>Edit {{username}} profile</h2>
+<div class="top-padding">
+  {{#with user}}
+  <h1 class="section-title">Edit {{username}}'s profile</h1>
 
-<form action="/user/edit" method="post">
-  {{#unless googleID}}
-  <label>Name</label>
-  <input type="text" name="username" value="{{username}}">
-  <label>Email</label>
-  <input type="text" name="email" value="{{email}}">
-  <label>New password</label>
-  <input type="password" name="password" value="{{password}}">
-  {{/unless}}
-  <label>Description</label>
-  <input type="text" name="description" value="{{description}}">
+  <form action="/user/edit" method="post" class="input-form user-edit">
+    <img src="{{imgPath}}" alt="user picture">
+    {{#unless googleID}}
+    <label>Name</label>
+    <input type="text" name="username" value="{{username}}">
+    <label>Email</label>
+    <input type="text" name="email" value="{{email}}">
+    <label>New password</label>
+    <input type="password" name="password" value="{{password}}">
+    {{/unless}}
+    <label>Description</label>
+    <input type="text" name="description" value="{{description}}">
 
-  <input type="submit" value="SAVE">
+    <input type="submit" value="SAVE">
 
 
-<img src="{{imgPath}}" alt="user picture">
-</form>
-<form action="/user/edit" method="post" enctype="multipart/form-data">
-  <label>Profile photo</label>
-  <input type="file" name="imgPath">
-  <input type="submit" value="SAVE">
-</form>
+  </form>
+  <form action="/user/edit" method="post" enctype="multipart/form-data" class="input-form">
+    <label>Profile photo</label>
+    <input type="file" name="imgPath">
+    <input type="submit" value="SAVE">
+  </form>
 
-{{/with}}
+  {{/with}}
+</div>

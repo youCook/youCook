@@ -1,39 +1,43 @@
-<h1> Daily planner </h1>
+<div class="top-padding">
+  <h1 class="section-title">Daily planner</h1>
 
-<form id="new-plan">
-  <div>
-    <input type="text" id="cal" placeholder="calories">
-  </div>
-  <div>
-    <label>diet</label>
-    <select id="diet">
-      <option value=""></option>
-      <option value="Gluten Free">Gluten Free</option>
-      <option value="Ketogenic">Ketogenic</option>
-      <option value="Vegetarian">Vegetarian</option>
-      <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
-      <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
-      <option value="Vegan">Vegan</option>
-      <option value="Pescetarian">Pescetarian</option>
-      <option value="Paleo">Paleo</option>
-    </select>
-  </div>
-  <div>
-    <label>allergies</label><input type="text" id="allergies">
-  </div>
-  <input type="submit" value="Go!">
-</form>
+  <form id="new-plan" class="input-form">
+    <div>
+      <input type="number" id="cal" placeholder="Daily calories" step="50">
+    </div>
+    <div class="input-select">
+      <label>Diet type:</label>
+      <select id="diet">
+        <option value=""></option>
+        <option value="Gluten Free">Gluten Free</option>
+        <option value="Ketogenic">Ketogenic</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
+        <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Pescetarian">Pescetarian</option>
+        <option value="Paleo">Paleo</option>
+      </select>
+    </div>
+    <div class="input-form">
+      <label>Allergies:</label>
+      <input type="text" id="allergies" placeholder="e.g. olives, tuna">
+    </div>
+    <input type="submit" value="Go!" class="select-btn">
+  </form>
 
 
 </div>
 <ul id="plan-container">
 </ul>
 <div id="recipe-plan-container">
-  
+
 </div>
 
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/javascripts/APIHandler.js"></script>
 <script src="/javascripts/index.js"></script>
+
+</div>
 
