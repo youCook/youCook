@@ -9,7 +9,8 @@ const postSchema = new Schema(
     postName: String,
     comment: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     likes: Number,
-    likers: Array
+    likers: Array,
+    genericRecipe: String,
   },
   { timestamps: true }
 );
