@@ -160,6 +160,15 @@ router.get("/index-top-ten", (req, res, next) => {
   });
 })
 
+router.get("/add-bookmark/:id", (req, res, next) => {
+  if(req.user.bookmarks.indexOf(req.params.id)>=0) {
+    return;
+  }
+  User.findByIdAndUpdate(req.user._id, { $push: { bookmarks: req.params.id } },{ new: true })
+  .then((user)) => {
+    res.json(user.bookmarks.length);
+  })
+})
 
 
 
