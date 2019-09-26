@@ -65,7 +65,6 @@ router.post("/signup", (req, res, next) => {
           to: email,
           subject: `Welcome ${username}`,
           html: confirmationEmail(username, newUser.token)
-          // html: `<a href="http://localhost:3000/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
         })
         .then(() => {
           res.redirect("/");

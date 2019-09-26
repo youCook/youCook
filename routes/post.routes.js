@@ -5,6 +5,7 @@ const Comment = require("../models/Comment");
 const User = require("../models/User");
 const uploadCloud = require("../configs/cloudinary.config");
 const checker = require("../middlewares/secure.mid");
+const axios = require("axios");
 
 router.get("/", (req, res, next) => {
   Post.find()
@@ -93,7 +94,7 @@ router.post("/post-edit/update/:id/:postName/:content", (req, res, next) => {
     content = req.params.content;
   }
   const id = req.params.id;
-  console.log("body es", req.body);
+
 
   Post.findByIdAndUpdate(
     id,
@@ -129,9 +130,13 @@ router.get("/post-like/:id", (req, res, next) => {
     res.json(post);
   });
 });
+
 router.get("/post-like-plus/:id", (req, res, next) => {
   Post.findById(req.params.id).then(post => {
-    if (post.likers.indexOf(req.user._id) >= 0 || post.creatorId === req.user._id) {
+    if (
+      post.likers.indexOf(req.user._id) >= 0 ||
+      post.creatorId === req.user._id
+    ) {
       return res.json(post);
     }
     let newLike = post.likes + 1;
@@ -150,14 +155,14 @@ router.get("/post-like-plus/:id", (req, res, next) => {
     });
   });
 });
+
 router.get("/index-top-ten", (req, res, next) => {
-  Post.find()
-  .then(posts=> {
-    posts.sort((a,b)=> b.likes - a.likes);
-    let top5 = posts.slice(0,5);
-    console.log(top5);
+  Post.find().then(posts => {
+    posts.sort((a, b) => b.likes - a.likes);
+    let top5 = posts.slice(0, 5);
     res.json(top5);
   });
+
 })
 
 router.get("/add-bookmark/:id", (req, res, next) => {
@@ -171,11 +176,26 @@ router.get("/add-bookmark/:id", (req, res, next) => {
 })
 
 
+});
 
 
-
-
-
-
+router.get("/show-recipe/:id", (req, res, next) => {
+  axios
+    .get(
+      `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
+    )
+    .then(response => {
+      const {data} = response
+      // console.log(data.results[0].id);
+      axios.get(`https://api.spoonacular.com/recipes/${data.results[0].id}/information?apiKey=${process.env.API_KEY}`)
+      .then(recipe => {
+        // const {data} = recipe
+        // console.log(recipe)
+        // let recipeFinal = recipe.data
+        res.render("posts/singlerecipe", {recipeFinal : [recipe.data]})
+      })
+      .catch(e=> next(e))
+    }).catch(e=> next(e))
+});
 
 module.exports = router;

@@ -42,7 +42,8 @@ const userSchema = new Schema(
     ,
     googleID: {
       type: String
-    }
+    },
+    bookmarks: Array,
   },
   {
     timestamps: true
