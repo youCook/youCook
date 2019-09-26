@@ -170,13 +170,40 @@ router.get("/add-bookmark/:id", (req, res, next) => {
     return;
   }
   User.findByIdAndUpdate(req.user._id, { $push: { bookmarks: req.params.id } },{ new: true })
-  .then((user)) => {
+  .then((user) => {
+    res.json(user.bookmarks.length);
+  })
+})
+router.get("/rem-bookmark/:id", (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, { $pull: { bookmarks: req.params.id } },{ new: true })
+  .then((user) => {
     res.json(user.bookmarks.length);
   })
 })
 
 
+router.get("/show-bookmarks", (req, res, next) => {
+  let recipesArr=[];
+  const promisesArray = [] 
+  req.user.bookmarks.forEach(bookmark => {
+    promisesArray.push(axios.get(`https://api.spoonacular.com/recipes/${bookmark}/information?apiKey=${process.env.API_KEY}`))
+  })
+  Promise.all(promisesArray)
+  .then(values => {
+    values.forEach(recipe => {
+      recipesArr.push(recipe.data);
+    })
+    res.render("posts/singlerecipe", {recipeFinal: recipesArr})
+  })    
 });
+
+router.get("/get-bookmark/:id", (req, res, next) => {
+
+    let response = req.user.bookmarks.indexOf(req.params.id)>=0;
+    console.log(response, req.user.bookmarks, "%%%%%%%%%%%%%%%%%%")
+    res.json(response)
+
+})
 
 
 router.get("/show-recipe/:id", (req, res, next) => {
@@ -197,5 +224,30 @@ router.get("/show-recipe/:id", (req, res, next) => {
       .catch(e=> next(e))
     }).catch(e=> next(e))
 });
+// router.get("/show-mybookmarks", (req, res, next) => {
+//   axios
+//     .get(
+//       `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
+//     )
+//     .then(response => {
+//       const {data} = response
+//       // console.log(data.results[0].id);
+//       axios.get(`https://api.spoonacular.com/recipes/${data.results[0].id}/information?apiKey=${process.env.API_KEY}`)
+//       .then(recipe => {
+//         // const {data} = recipe
+//         // console.log(recipe)
+//         // let recipeFinal = recipe.data
+//         res.render("posts/singlerecipe", {recipeFinal : [recipe.data]})
+//       })
+//       .catch(e=> next(e))
+//     }).catch(e=> next(e))
+// });
+
+
+
+
+
+
+
 
 module.exports = router;
