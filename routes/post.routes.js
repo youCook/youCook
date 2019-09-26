@@ -34,20 +34,20 @@ router.get("/post-info/:id", (req, res, next) => {
     .catch(error => next(error));
 });
 
-router.post("/post-edit/:id", checker.checkLogin, (req, res) => {
-  // Post.findByIdAndUpdate(
-  //   req.params.id,
-  //   { $push: { comment: comment._id } },
-  //   { new: true }
-  // )
-  //   .then(post => {
-  //     res.redirect("back");
-  //   })
-  //   .catch(error => next(error));
-});
-
-router.get("/post-edit/:id", checker.checkLogin, (req, res) => {
-  Post.findById(req.params.id).then(post => res.status(200).json(post));
+router.post("/post-info/:id/edit", checker.checkLogin, (req, res) => {
+  Comment.create({ content: req.body.content, authorId: req.user._id })
+    .then(comment => {
+      Post.findByIdAndUpdate(
+        req.params.id,
+        { $push: { comment: comment._id } },
+        { new: true }
+      )
+        .then(post => {
+          res.redirect("back");
+        })
+        .catch(error => next(error));
+    })
+    .catch(error => next(error));
 });
 
 router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {

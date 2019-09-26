@@ -47,7 +47,6 @@ router.get("/recipes/:id", (req, res, next) => {
 });
 
 router.get("/recipes/instructions/:id", (req, res, next) => {
-  console.log("entra")
   axios.get(`https://api.spoonacular.com/recipes/${req.params.id}/analyzedInstructions?apiKey=${process.env.API_KEY}`)
   .then(response=> {
     console.log(response)
