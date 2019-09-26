@@ -64,7 +64,7 @@ router.post("/signup", (req, res, next) => {
           from: `'youCook Team' <${process.env.GMAIL_USER}>`,
           to: email,
           subject: `Welcome ${username}`,
-          html: confirmationEmail(username, `<a href="https://localhost:3000/confirm/${newUser.token}"></a>`)
+          html: confirmationEmail(username, newUser.token)
           // html: `<a href="http://localhost:3000/confirm/${newUser.token}">Confirmate your email, please 🗣</a>`
         })
         .then(() => {
