@@ -12,7 +12,7 @@ router.get('/findrecipes', (req, res, next)=>{
 })
 
 router.get('/recipesearch/:search', (req, res, next) => {
-  console.log("hola")
+  
   axios.get(`https://api.spoonacular.com/recipes/search?query=${req.params.search}&apiKey=${process.env.API_KEY}`)
   .then(response=> {
     console.log(response)

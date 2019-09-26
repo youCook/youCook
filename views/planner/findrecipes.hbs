@@ -1,28 +1,33 @@
-<h1>Buscador de recetas</h1>
-
-<form id="findrecipe">
+<div class="top-padding">
   <div>
-    <input type="text" id="recipesearch" placeholder="Search for recipies">
+    <h1 class="section-title">Recipe finder</h1>
+
+    <form id="findrecipe" class="input-form">
+      <div>
+        <input type="text" id="recipesearch" placeholder="Search for recipies">
+      </div>
+
+      <input type="submit" value="Go!" class="select-btn">
+    </form>
+
+    <div id="searchresults">
+
+    </div>
+
   </div>
-  
-  <input type="submit" value="Go!">
-</form>
 
-<div id="searchresults">
+<br><br><br>
 
+  <h2 class="section-title">Random Recipe:</h2>
+
+  <div id="randomrecipe">
+
+  </div>
+
+  {{!-- reactivar para que funcione la receta random --}}
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/APIHandler.js"></script>
+  <script src="/javascripts/recipesearch.js"></script>
+  {{!-- <script src="/javascripts/randomrecipe.js"></script> --}}
 </div>
-
-
-
-<h2>Random Recipe:</h2>
-
-<div id="randomrecipe">
-
-</div>
-
-{{!-- reactivar para que funcione la receta random --}}
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/javascripts/APIHandler.js"></script>
-<script src="/javascripts/recipesearch.js"></script>
-{{!-- <script src="/javascripts/randomrecipe.js"></script> --}}

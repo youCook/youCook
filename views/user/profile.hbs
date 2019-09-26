@@ -1,20 +1,29 @@
-Private page
+<div class="top-padding">
+  <h1 class="section-title">Private page</h1>
+  <h2 class="section-title">Hello {{user.username}} 🚀</h2>
 
-<div>
-  <img src="{{user.imgPath}}" alt="Profile photo">
-  <h2>Hello {{user.username}} 🚀</h2>
-  <q>{{user.description}}</q>
-  <div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-card-left">
+      <div>
+      </div>
+      <div>
+        <img src="{{user.imgPath}}" alt="Profile photo">
+        <q>{{user.description}}</q>
+      </div>
+      <div>
+        <a href="/user/edit">Edit profile</a>
+      </div>
+    </div>
 
-    <ul class="profile-posts-container">
+    <div class="profile-container">
 
-    </ul>
+      <ul class="profile-posts-container">
+
+      </ul>
+
+    </div>
+
 
   </div>
-
-
-  <a href="/user/edit">Edit profile</a>
-  <a href="/">Index</a>
-  <a href="/logout">Logout</a>
+  <script src="/javascripts/postScript.js"></script>
 </div>
-<script src="/javascripts/postScript.js"></script>

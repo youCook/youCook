@@ -170,13 +170,13 @@ router.get("/add-bookmark/:id", (req, res, next) => {
     return;
   }
   User.findByIdAndUpdate(req.user._id, { $push: { bookmarks: req.params.id } },{ new: true })
-  .then((user)) => {
+  .then((user) => {
     res.json(user.bookmarks.length);
   })
 })
 
 
-});
+
 
 
 router.get("/show-recipe/:id", (req, res, next) => {

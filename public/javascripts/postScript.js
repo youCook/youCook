@@ -8,11 +8,13 @@ window.onload = () => {
       postsContainer.innerHTML += `
  
       <li>
-        <img src="${post.picPath}" alt="recipe photo">
-        ${post.postName}
-        <button class="post-edit" id="${post._id}">Edit post</button>
-        <button class="post-delete" id="${post._id}">Delete post</button>
-        <input type="hidden" id="post-id" value="">
+        <div class="border-line">
+          <h2>Recipe Name: ${post.postName}</h2>
+          <img src="${post.picPath}" alt="recipe photo">
+          <button class="post-edit" id="${post._id}">Edit post</button>
+          <button class="post-delete" id="${post._id}">Delete post</button>
+          <input type="hidden" id="post-id" value="">
+        </div>
       </li>
       `;
     });
@@ -32,12 +34,12 @@ window.onload = () => {
         <input type="text" name="content" class="content" value="${data.data.content}">
         <input type="hidden" class="edit-id-link" value="${data.data._id}">
         <input type="submit" class="btn-send-post-edit" value="SAVE">
-      </form>
-      <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data">
-      <label>Post photo</label>
-      <input type="file" name="picPath">
-      <input type="submit" value="SAVE">
-    </form>
+        </form>
+        <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data">
+          <label>Post photo</label>
+          <input type="file" name="picPath">
+          <input type="submit" value="SAVE">
+        </form>
       </li>
       `;
               document.querySelector(".btn-send-post-edit").onclick = function(
@@ -65,11 +67,13 @@ window.onload = () => {
                       postsContainer.innerHTML += `
          
               <li>
-                <img src="${post.picPath}" alt="recipe photo">
-                ${post.postName}
-                <button class="post-edit" id="${post._id}">Edit post</button>
-                <div class="post-delete id="${post._id}">Delete post</div>
-                <input type="hidden" id="post-id" value="${post._id}">
+                <div>
+                  <h2>${post.postName}</h2>
+                  <img src="${post.picPath}" alt="recipe photo">
+                  <button class="post-edit" id="${post._id}">Edit post</button>
+                  <div class="post-delete id="${post._id}">Delete post</div>
+                  <input type="hidden" id="post-id" value="${post._id}">
+                </div>
               </li>
               `;
                     });
@@ -94,11 +98,13 @@ window.onload = () => {
                 postsContainer.innerHTML += `
 
               <li>
-                <img src="${post.picPath}" alt="recipe photo">
-                ${post.postName}
-                <button class="post-edit" id="${post._id}">Edit post</button>
-                <button class="post-delete" id="${post._id}">Delete post</button>
-                <input type="hidden" id="post-id" value="">
+                <div>
+                  <h2>${post.postName}</h2>
+                  <img src="${post.picPath}" alt="recipe photo">
+                  <button class="post-edit" id="${post._id}">Edit post</button>
+                  <button class="post-delete" id="${post._id}">Delete post</button>
+                  <input type="hidden" id="post-id" value="">
+                </div>
               </li>
               `;
               });
