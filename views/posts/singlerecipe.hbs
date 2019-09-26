@@ -1,0 +1,25 @@
+<div class="top-padding">
+
+  {{#if recipeFinal}}
+  {{#each recipeFinal}}
+  <div>
+    <h2>Title: {{title}}</h2>
+  <img src="{{image}}" alt="Recipe image">
+  <h3>Servings: {{servings}}</h3>
+  <h3>Price per serving: {{pricePerServing}}</h3>
+  <h3>ready in minutes: {{readyInMinutes}}</h3>
+  <ul>
+    {{#each analyzedInstructions.[0].steps}}
+    <li>
+      {{number}} {{step}}
+    </li>
+    {{/each}}
+  </ul>
+  </div>
+  {{/each}}
+  {{/if}}
+  {{#unless recipeFinal}}
+  <h1>No hay receta</h1>
+  {{/unless}}
+
+</div>

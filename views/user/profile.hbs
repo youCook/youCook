@@ -1,32 +1,20 @@
 Private page
 
-  <div>
-    <img src="{{user.imgPath}}" alt="Profile photo">
-    <h2>Hello {{user.username}} 🚀</h2>
-    <q>{{user.description}}</q>
-      <div class="profile-container">
+<div>
+  <img src="{{user.imgPath}}" alt="Profile photo">
+  <h2>Hello {{user.username}} 🚀</h2>
+  <q>{{user.description}}</q>
+  <div class="profile-container">
 
     <ul class="profile-posts-container">
-      {{!-- {{#each user.ownPosts}}
-      <li>
-        <img src="{{this.picPath}}" alt="recipe photo">
-        {{this.postName}}
-        <button class="post-edit" id="{{this._id}}">Edit post</button>
-        <div class="post-delete-{{_this._id}}">Delete post</div>
-        <input type="hidden" id="post-id" value="${data.meals[0].id}">
-      </li>
-      {{/each}} --}}
+
     </ul>
 
-      </div>
-
-
-    <a href="/user/edit">Edit profile</a>
-    <a href="/">Index</a>
-    <a href="/logout">Logout</a>
   </div>
-  <script src="/javascripts/postScript.js"></script>
 
 
-
-
+  <a href="/user/edit">Edit profile</a>
+  <a href="/">Index</a>
+  <a href="/logout">Logout</a>
+</div>
+<script src="/javascripts/postScript.js"></script>

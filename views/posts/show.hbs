@@ -2,6 +2,9 @@
   {{#if post}}
   <h1>{{post.postName}}</h1>
 
+  {{!-- <button value="{{genericRecipe}}">View this recipe</button> --}}
+  
+
   {{#post.creatorId}}
   <div>
     <img src="{{imgPath}}" alt="{{username}} profile picture">
@@ -9,6 +12,7 @@
   </div>
   {{/post.creatorId}}
 
+  <a href="/post/show-recipe/{{post.genericRecipe}}" id="genericRecipe">Show generic recipe</a>
   <div>
     <img src="{{post.picPath}}" alt="{{post.postName}}">
   </div>
