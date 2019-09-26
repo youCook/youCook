@@ -125,32 +125,46 @@ router.get("/create", checker.checkLogin, (req, res, next) => {
 });
 
 router.get("/post-like/:id", (req, res, next) => {
-  Post.findById(req.params.id)
-  .then(post => {
+  Post.findById(req.params.id).then(post => {
     res.json(post);
-  })
-})
+  });
+});
 router.get("/post-like-plus/:id", (req, res, next) => {
-  Post.findById(req.params.id)
-  .then(post => {
-    if(post.likers.indexOf(req.user._id)>=0) {
-      return
+  Post.findById(req.params.id).then(post => {
+    if (post.likers.indexOf(req.user._id) >= 0 || post.creatorId === req.user._id) {
+      return res.json(post);
     }
-    let newLike = post.likes +1;
-    Post.findByIdAndUpdate(req.params.id, {likes:newLike}, { new: true })
-    .then(post => {
-      Post.findByIdAndUpdate(req.params.id, {$push: { likers: req.user._id }}, { new: true })
-      .then(post => {
-
+    let newLike = post.likes + 1;
+    Post.findByIdAndUpdate(
+      req.params.id,
+      { likes: newLike },
+      { new: true }
+    ).then(post => {
+      Post.findByIdAndUpdate(
+        req.params.id,
+        { $push: { likers: req.user._id } },
+        { new: true }
+      ).then(post => {
         res.json(post);
-      })
-
-  })
-
-
-  })
-  
+      });
+    });
+  });
+});
+router.get("/index-top-ten", (req, res, next) => {
+  Post.find()
+  .then(posts=> {
+    posts.sort((a,b)=> b.likes - a.likes);
+    let top5 = posts.slice(0,5);
+    console.log(top5);
+    res.json(top5);
+  });
 })
+
+
+
+
+
+
 
 
 
