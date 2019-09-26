@@ -5,29 +5,34 @@
 
   <div class="profile-card">
     <div class="profile-card-left">
-      <div>
-      </div>
+      {{!-- <div>
+      </div> --}}
       <div>
         <img src="{{user.imgPath}}" alt="Profile photo">
-        <q>{{user.description}}</q>
       </div>
       <div>
+        <p>{{user.description}}</p>
+      </div>
+      <div class="profile-margin-a">
         <a href="/user/edit">Edit profile</a>
       </div>
-      <a href="/post/show-bookmarks">Show bookmarks</a>
+      <div class="profile-margin-a">
+        <a href="/post/show-bookmarks">Show bookmarks</a>
+      </div>
     </div>
 
-<div>
-  
-    <div class="profile-container">
+    <div>
 
-      <ul class="profile-posts-container">
+      <div class="profile-container">
 
-      </ul>
+        <ul class="profile-posts-container">
+
+        </ul>
+
+      </div>
+
 
     </div>
-
-
+    <script src="/javascripts/postScript.js"></script>
   </div>
-  <script src="/javascripts/postScript.js"></script>
-</div>
+</div>  

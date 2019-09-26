@@ -1,0 +1,21 @@
+.google-signup-login {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  a {
+    text-decoration: none;
+    color: #475159;
+    font-size: 1.2rem;
+    transition: 0.5s;
+  }
+  a:hover {
+    // font-size: 1.3rem;
+    // color: #efdd86;
+    text-shadow: 0px 0px 10px #475159;
+  }
+}
+
+.error-message {
+  margin: 0 0 1rem 0;
+  color: #96523d;
+}
