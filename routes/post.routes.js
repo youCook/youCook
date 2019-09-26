@@ -162,7 +162,22 @@ router.get("/index-top-ten", (req, res, next) => {
     let top5 = posts.slice(0, 5);
     res.json(top5);
   });
+
+})
+
+router.get("/add-bookmark/:id", (req, res, next) => {
+  if(req.user.bookmarks.indexOf(req.params.id)>=0) {
+    return;
+  }
+  User.findByIdAndUpdate(req.user._id, { $push: { bookmarks: req.params.id } },{ new: true })
+  .then((user)) => {
+    res.json(user.bookmarks.length);
+  })
+})
+
+
 });
+
 
 router.get("/show-recipe/:id", (req, res, next) => {
   axios
