@@ -1,27 +1,34 @@
 <div class="top-padding">
   {{#if post}}
-  <h1>{{post.postName}}</h1>
-  
+  <h1 class="section-title">{{post.postName}}</h1>
 
-  {{#post.creatorId}}
-  <div>
-    <img src="{{imgPath}}" alt="{{username}} profile picture">
-    <h4>by <a href="/user/publicprofile/{{_id}}">{{username}}</a></h4>
+  <div class="flex">
+
+    {{#post.creatorId}}
+    <div class="show-post-profile">
+      <img src="{{imgPath}}" alt="{{username}} profile picture">
+      <h4 class="link-profile">by <a href="/user/publicprofile/{{_id}}">{{username}}</a></h4>
+    </div>
+    {{/post.creatorId}}
+
+    <div class="flex-col show-post-img mongo-line">
+      <div>
+        <img src="{{post.picPath}}" alt="{{post.postName}}">
+      </div>
+      <div class="flex">
+        <a href="/post/show-recipe/{{post.genericRecipe}}" id="genericRecipe">Show generic recipe</a>
+        <div class="likes-container"></div>
+      </div>
+      <input type="hidden" id="post-id" value="{{post._id}}">
+    </div>
+
+
   </div>
-  {{/post.creatorId}}
 
-  <a href="/post/show-recipe/{{post.genericRecipe}}" id="genericRecipe">Show generic recipe</a>
-  <div>
-    <img src="{{post.picPath}}" alt="{{post.postName}}">
-  </div>
-  <input type="hidden" id="post-id" value="{{post._id}}">`
-  <div class="likes-container"></div>
 
-  
-  
-  
   <p>{{post.content}}</p>
   {{/if}}
+
 
   <form action="/post/post-info/{{post._id}}/edit" method="post">
     <textarea name="content" id="" cols="30" rows="2"></textarea>
@@ -37,7 +44,7 @@
       <div>
         <img src="{{authorId.imgPath}}" alt="{{authorId.username}} profile picture">
         <h4>by <a href="/user/publicprofile/{{authorId._id}}">{{authorId.username}}</a> </h4>
-        
+
       </div>
       <p>{{content}}</p>
     </li>
@@ -48,4 +55,4 @@
   <p>There are no comments for this entry</p>
   {{/if}}
 </div>
-  <script src="/javascripts/postShowScript.js"></script>
+<script src="/javascripts/postShowScript.js"></script>

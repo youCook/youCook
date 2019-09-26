@@ -28,14 +28,14 @@ window.onload = () => {
               postsContainer.innerHTML = "";
               postsContainer.innerHTML += `
  
-      <li class="edit-post-container">
-        <form class="edit-post-inline"id=${data.data._id}>
+      <li class="edit-post-container border-line">
+        <form class="edit-post-inline input-form"id=${data.data._id}>
         <input type="text" name="postName" class="postName" value="${data.data.postName}">
-        <input type="text" name="content" class="content" value="${data.data.content}">
+        <textarea  name="content" class="content" placeholder="${data.data.content}"></textarea>
         <input type="hidden" class="edit-id-link" value="${data.data._id}">
         <input type="submit" class="btn-send-post-edit" value="SAVE">
         </form>
-        <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data">
+        <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data" class="input-form">
           <label>Post photo</label>
           <input type="file" name="picPath">
           <input type="submit" value="SAVE">
@@ -67,7 +67,7 @@ window.onload = () => {
                       postsContainer.innerHTML += `
          
               <li>
-                <div>
+                <div class="border-line">
                   <h2>${post.postName}</h2>
                   <img src="${post.picPath}" alt="recipe photo">
                   <button class="post-edit" id="${post._id}">Edit post</button>
@@ -98,7 +98,7 @@ window.onload = () => {
                 postsContainer.innerHTML += `
 
               <li>
-                <div>
+                <div class="border-line">
                   <h2>${post.postName}</h2>
                   <img src="${post.picPath}" alt="recipe photo">
                   <button class="post-edit" id="${post._id}">Edit post</button>
