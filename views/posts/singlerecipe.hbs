@@ -4,6 +4,8 @@
   {{#each recipeFinal}}
   <div>
     <h2>Title: {{title}}</h2>
+    <div class="bookmarks-container"></div>
+    <input type="hidden" class="post-id" value="{{id}}">`
   <img src="{{image}}" alt="Recipe image">
   <h3>Servings: {{servings}}</h3>
   <h3>Price per serving: {{pricePerServing}}</h3>
@@ -23,3 +25,5 @@
   {{/unless}}
 
 </div>
+
+ <script src="/javascripts/recipeShow.js"></script>

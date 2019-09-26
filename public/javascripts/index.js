@@ -3,7 +3,11 @@ const apiHandler = new APIHandler();
 const recipeBox = document.querySelector("#plan-container");
 const recipeContainer = document.querySelector("#recipe-plan-container");
 
-// window.onload(() => {
+
+
+
+
+
 document.getElementById("new-plan").addEventListener("submit", function(e) {
   e.preventDefault();
   const cal = document.querySelector("#cal").value;
@@ -11,11 +15,7 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
   const allergies = document.querySelector("#allergies").value;
   apiHandler
     .getMealPlanner(cal, diet, allergies)
-
     .then(res => {
-      // then((res)=>{
-
-      // })
       const { data } = res;
       recipeBox.innerHTML = "";
       recipeBox.innerHTML += `
@@ -36,6 +36,8 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
             <div class="imageUrl"><img src="https://spoonacular.com/recipeImages/${data.meals[0].id}-240x150.jpg" alt="breakfast image"></div>
             <input type="hidden" id="breakfast-id-link" value="${data.meals[0].id}">
             <input type="hidden" id="breakfast-id-name" value="${data.meals[0].title}">
+             <div class="bookmarks-container"></div>
+              <input type="hidden" class="post-id" value="${data.meals[0].id}">
             </div>
             </li>
             <li>
@@ -61,6 +63,39 @@ document.getElementById("new-plan").addEventListener("submit", function(e) {
             </div>
             </li>
             `;
+
+
+
+            
+            const backUrl = "http://localhost:3000";
+            const bookmarksContainer = document.querySelector(".bookmarks-container");
+          
+              let id = document.querySelector(".post-id").value;
+              axios.get(`${backUrl}/post/get-bookmark/${id}`).then(data => {
+                if (data.data) {
+                  bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Unbookmark</p>`;
+            
+                } else {
+                  bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Bookmark</p>`;
+                }
+              });
+            
+              bookmarksContainer.onclick = function(e) {
+                if (document.querySelector(".show-post-bookmarks").innerHTML == "Unbookmark") {
+                  axios.get(`${backUrl}/post/rem-bookmark/${id}`).then(() => {
+                    bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Bookmark</p>`;
+                  });
+                } else {
+                  axios.get(`${backUrl}/post/add-bookmark/${id}`).then(() => {
+                    bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Unbookmark</p>`;
+                  });
+                }
+              };
+         
+            
+
+
+
 
       document.querySelector("#breakfast-recipe-link").onclick = function() {
         const id = document.querySelector("#breakfast-id-link").value;

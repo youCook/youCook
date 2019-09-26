@@ -1,22 +1,25 @@
 const backUrl = "http://localhost:3000";
-const bookmarksContainer= document.querySelector(".bookmark-container");
+const bookmarksContainer = document.querySelector(".bookmarks-container");
 window.onload = () => {
-//   let id= document.querySelector("#post-id").value;
-//   axios.get(`${backUrl}/post/add-bookmark/${id}`).then(data => {
-//     let bookmarks = data.data.bookmarks;
-//     bookmarksContainer.innerHTML=
-//     `<p id="show-post-bookmarks">${bookmarks} Bookmarks</p>`
-//  });
+  let id = document.querySelector(".post-id").value;
+  axios.get(`${backUrl}/post/get-bookmark/${id}`).then(data => {
+    if (data.data) {
+      bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Unbookmark</p>`;
 
-  document.querySelector(".bookmarks-container").onclick = function(e) {
-    axios.get(`${backUrl}/post/add-bookmark/${id}`)
-    .then(data => {
-      let newBookmarks= data.data.bookmark;
-      bookmarksContainer.innerHTML=
-    `<p id="show-post-bookmarks">${newBookmarks} Bookmarked</p>`
+    } else {
+      bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Bookmark</p>`;
+    }
   });
+
+  bookmarksContainer.onclick = function(e) {
+    if (document.querySelector(".show-post-bookmarks").innerHTML == "Unbookmark") {
+      axios.get(`${backUrl}/post/rem-bookmark/${id}`).then(() => {
+        bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Bookmark</p>`;
+      });
+    } else {
+      axios.get(`${backUrl}/post/add-bookmark/${id}`).then(() => {
+        bookmarksContainer.innerHTML = `<p class="show-post-bookmarks">Unbookmark</p>`;
+      });
+    }
+  };
 };
-}
-
-
-
