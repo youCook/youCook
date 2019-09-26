@@ -212,6 +212,7 @@ p {
         display: grid;
         align-content: center; }
   .grid li:nth-child(1) {
+
     height: 335px; }
   .grid li:nth-child(2) {
     height: 507px; }
@@ -283,5 +284,6 @@ p {
     height: 350px; }
   .grid li:nth-child(36) {
     height: 516px; }
+
 
 /*# sourceMappingURL=style.css.map */
