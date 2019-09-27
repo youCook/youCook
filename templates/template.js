@@ -244,7 +244,7 @@ module.exports = (name, link) => {
            align="center" bgcolor="#89b6A5" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#89b6A5;" valign="middle"
         >
           <a
-             href="${process.env.MAIL_LOCAL_URL}${link}" style="display:inline-block;background:#89b6A5;color:#F1F0EA;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;" target="_blank"
+             href="${process.env.LOCAL_URL}${link}" style="display:inline-block;background:#89b6A5;color:#F1F0EA;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;" target="_blank"
           >
             CONFIRM
           </a>
