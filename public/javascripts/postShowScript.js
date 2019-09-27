@@ -1,5 +1,5 @@
 // const backUrl = "http://localhost:3000";
-const backUrl = "https://youcookapp.herokuapp.com/post";
+const backUrl = "https://youcookapp.herokuapp.com";
 const likesContainer= document.querySelector(".likes-container");
 let canAddLike= true;
 window.onload = () => {

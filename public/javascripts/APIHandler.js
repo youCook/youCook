@@ -1,7 +1,7 @@
 class APIHandler {
   constructor(baseURL) {
     // this.backURL = "http://localhost:3000"
-    this.backURL = "https://youcookapp.herokuapp.com/post"
+    this.backURL = "https://youcookapp.herokuapp.com"
   }
 
   getMealPlanner(cal, diet, allergies) {
