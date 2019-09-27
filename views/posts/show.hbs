@@ -1,7 +1,7 @@
 <div class="top-padding">
   {{#if post}}
   <h1 class="section-title">{{post.postName}}</h1>
-  
+
   <div class="flex-col">
     <div class="show-flex">
 
@@ -37,31 +37,39 @@
       {{/if}}
 
 
-      <div class="input-form">
-        <form action="/post/post-info/{{post._id}}/edit" method="post">
-          <textarea name="content" id="" cols="30" rows="2"></textarea>
-          <button type="submit">Comment</button>
-        </form>
+      <div class="show-post-comments">
+        <div>
+          <form class="input-form" action="/post/post-info/{{post._id}}/edit" method="post">
+            <textarea name="content" id="" cols="30" rows="2"></textarea>
+            <button type="submit">Comment</button>
+          </form>
+        </div>
 
-        <h3>Comments ({{post.comment.length}})</h3>
+        <div class="comments-number">
+          <h3>Comments ({{post.comment.length}})</h3>
+        </div>
 
-        {{#if post.comment}}
-        <ul>
-          {{#each post.comment}}
-          <li>
-            <div>
-              <img src="{{authorId.imgPath}}" alt="{{authorId.username}} profile picture">
-              <h4>by <a href="/user/publicprofile/{{authorId._id}}">{{authorId.username}}</a> </h4>
+        <div class="post-comment">
+          {{#if post.comment}}
+          <ul>
+            {{#each post.comment}}
+            <li class="flex-li">
+              <div class="post-comment-left">
+                <img src="{{authorId.imgPath}}" alt="{{authorId.username}} profile picture">
+                <h4>by <a href="/user/publicprofile/{{authorId._id}}">{{authorId.username}}</a> </h4>
 
-            </div>
-            <p>{{content}}</p>
-          </li>
-          {{/each}}
-        </ul>
+              </div>
+              <div class="post-comment-right">
+                <p>{{content}}</p>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
 
-        {{else}}
-        <p>There are no comments for this entry</p>
-        {{/if}}
+          {{else}}
+          <p>There are no comments for this entry</p>
+          {{/if}}
+        </div>
       </div>
 
     </div>
