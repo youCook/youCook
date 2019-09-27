@@ -27,13 +27,12 @@ window.onload = () => {
           axios
             .get(`${backUrl}/post/post-edit/${e.target.id}`)
             .then(data => {
-              // console.log("helloooooooooooooooo")
               postsContainer.innerHTML = "";
               postsContainer.innerHTML += `
  
       <li class="edit-post-container border-line">
         <form class="edit-post-inline input-form"id=${data.data._id}>
-        <input type="text" name="postName" class="postName" value="${data.data.postName}">
+        <input type="text" name="postName" class="postName" placeholder="${data.data.postName}">
         <textarea name="content" class="content" placeholder="${data.data.content}"></textarea>
         <input type="hidden" class="edit-id-link" value="${data.data._id}">
         <input type="submit" class="btn-send-post-edit" value="SAVE">
