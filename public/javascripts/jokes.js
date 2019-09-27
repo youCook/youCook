@@ -1,5 +1,3 @@
-// import Axios from "axios";
-
 const apiHandler = new APIHandler();
 const topTenContainer = document.querySelector(".top-container");
 
