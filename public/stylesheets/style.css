@@ -30,77 +30,79 @@
         display: grid;
         align-content: center; }
   .grid li:nth-child(1) {
-    height: 572px; }
+
+    height: 327px; }
   .grid li:nth-child(2) {
-    height: 470px; }
+    height: 375px; }
   .grid li:nth-child(3) {
-    height: 209px; }
+    height: 561px; }
   .grid li:nth-child(4) {
-    height: 416px; }
+    height: 347px; }
   .grid li:nth-child(5) {
-    height: 394px; }
+    height: 247px; }
   .grid li:nth-child(6) {
-    height: 491px; }
+    height: 399px; }
   .grid li:nth-child(7) {
-    height: 387px; }
+    height: 496px; }
   .grid li:nth-child(8) {
-    height: 345px; }
+    height: 443px; }
   .grid li:nth-child(9) {
-    height: 315px; }
+    height: 588px; }
   .grid li:nth-child(10) {
-    height: 267px; }
+    height: 276px; }
   .grid li:nth-child(11) {
-    height: 203px; }
+    height: 332px; }
   .grid li:nth-child(12) {
-    height: 452px; }
-  .grid li:nth-child(13) {
-    height: 350px; }
-  .grid li:nth-child(14) {
-    height: 262px; }
-  .grid li:nth-child(15) {
     height: 354px; }
+  .grid li:nth-child(13) {
+    height: 342px; }
+  .grid li:nth-child(14) {
+    height: 401px; }
+  .grid li:nth-child(15) {
+    height: 521px; }
   .grid li:nth-child(16) {
-    height: 492px; }
+    height: 391px; }
   .grid li:nth-child(17) {
-    height: 598px; }
+    height: 390px; }
   .grid li:nth-child(18) {
-    height: 530px; }
+    height: 600px; }
   .grid li:nth-child(19) {
-    height: 222px; }
+    height: 277px; }
   .grid li:nth-child(20) {
-    height: 411px; }
+    height: 530px; }
   .grid li:nth-child(21) {
-    height: 317px; }
+    height: 468px; }
   .grid li:nth-child(22) {
-    height: 533px; }
+    height: 407px; }
   .grid li:nth-child(23) {
-    height: 244px; }
+    height: 234px; }
   .grid li:nth-child(24) {
-    height: 539px; }
+    height: 230px; }
   .grid li:nth-child(25) {
-    height: 351px; }
+    height: 427px; }
   .grid li:nth-child(26) {
-    height: 421px; }
+    height: 364px; }
   .grid li:nth-child(27) {
-    height: 336px; }
+    height: 391px; }
   .grid li:nth-child(28) {
     height: 284px; }
   .grid li:nth-child(29) {
-    height: 210px; }
+    height: 534px; }
   .grid li:nth-child(30) {
-    height: 336px; }
+    height: 468px; }
   .grid li:nth-child(31) {
-    height: 420px; }
+    height: 332px; }
   .grid li:nth-child(32) {
-    height: 566px; }
+    height: 584px; }
   .grid li:nth-child(33) {
-    height: 263px; }
+    height: 425px; }
   .grid li:nth-child(34) {
-    height: 307px; }
+    height: 331px; }
   .grid li:nth-child(35) {
-    height: 481px; }
+    height: 419px; }
   .grid li:nth-child(36) {
-    height: 487px; }
+    height: 393px; }
+
 
 .google-signup-login {
   display: flex;
@@ -154,6 +156,21 @@
 .navbar-logout {
   width: 20px;
   margin-right: 1rem; }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #f1f0ea;
+  text-align: center;
+  height: 0.5rem;
+  background: #87b5a3; }
+  .footer p {
+    font-size: 6px; }
 
 .profile-container {
   display: flex;
@@ -228,7 +245,8 @@ body {
   font-family: "Rubik", sans-serif;
   font-size: 15px;
   color: #475159;
-  background: #f1f0ea; }
+  background: #f1f0ea;
+  height: 100vh; }
 
 h1 {
   font-size: 35px; }

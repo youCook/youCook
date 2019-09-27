@@ -34,3 +34,22 @@
   width: 20px;
   margin-right: 1rem;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #f1f0ea;
+  text-align: center;
+  height: 0.5rem;
+  background: #87b5a3;
+  p {
+    font-size: 6px;
+
+  }
+}
+

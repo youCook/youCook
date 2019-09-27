@@ -4,7 +4,7 @@ const likesContainer= document.querySelector(".likes-container");
 let canAddLike= true;
 window.onload = () => {
   let id= document.querySelector("#post-id").value;
-  console.log(id)
+  // console.log(id)
   axios.get(`${backUrl}/post/post-like/${id}`).then(data => {
     let likes = data.data.likes;
     likesContainer.innerHTML=

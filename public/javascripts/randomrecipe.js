@@ -4,7 +4,7 @@ window.addEventListener("load", function(e) {
   e.preventDefault();
   apiHandler2.getRandomRecipe().then(res => {
     const { data } = res;
-    console.log(data);
+    // console.log(data);
     document.querySelector("#randomrecipe").innerHTML = "";
     document.querySelector("#randomrecipe").innerHTML = `
     <div>

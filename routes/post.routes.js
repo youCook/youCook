@@ -211,13 +211,13 @@ router.get("/get-bookmark/:id", (req, res, next) => {
 
 
 router.get("/show-recipe/:id", (req, res, next) => {
-  console.log("%%%%%%%%%")
+  // console.log("%%%%%%%%%")
   axios
     .get(
       `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
     )
     .then(response => {
-      console.log(response)
+      // console.log(response)
       const {data} = response
       // console.log(data.results[0].id);
       axios.get(`https://api.spoonacular.com/recipes/${data.results[0].id}/information?apiKey=${process.env.API_KEY}`)

@@ -27,7 +27,7 @@ window.onload = () => {
           axios
             .get(`${backUrl}/post/post-edit/${e.target.id}`)
             .then(data => {
-              console.log("helloooooooooooooooo")
+              // console.log("helloooooooooooooooo")
               postsContainer.innerHTML = "";
               postsContainer.innerHTML += `
  
