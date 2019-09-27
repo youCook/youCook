@@ -51,7 +51,7 @@ router.post("/post-info/:id/edit", checker.checkLogin, (req, res) => {
 });
 
 router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
-  const { content, postName } = req.body;
+  const { content, postName, genericRecipe } = req.body;
   const { url } = req.file;
 
   const newPost = new Post({
@@ -59,7 +59,8 @@ router.post("/create", uploadCloud.single("picPath"), (req, res, next) => {
     creatorId: req.user._id,
     postName: postName,
     picPath: url,
-    likes: 0
+    likes: 0,
+    genericRecipe: genericRecipe
   });
   newPost
     .save()
@@ -210,6 +211,26 @@ router.get("/get-bookmark/:id", (req, res, next) => {
 
 
 router.get("/show-recipe/:id", (req, res, next) => {
+  console.log("%%%%%%%%%")
+  axios
+    .get(
+      `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
+    )
+    .then(response => {
+      console.log(response)
+      const {data} = response
+      // console.log(data.results[0].id);
+      axios.get(`https://api.spoonacular.com/recipes/${data.results[0].id}/information?apiKey=${process.env.API_KEY}`)
+      .then(recipe => {
+        // const {data} = recipe
+        // console.log(recipe)
+        // let recipeFinal = recipe.data
+        res.render("posts/singlerecipe", {recipeFinal : [recipe.data]})
+      })
+      .catch(e=> next(e))
+    }).catch(e=> next(e))
+});
+router.get("/show-mybookmarks", (req, res, next) => {
   axios
     .get(
       `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
@@ -227,38 +248,8 @@ router.get("/show-recipe/:id", (req, res, next) => {
       .catch(e=> next(e))
     }).catch(e=> next(e))
 });
-// router.get("/show-mybookmarks", (req, res, next) => {
-//   axios
-//     .get(
-//       `https://api.spoonacular.com/recipes/search?query=${req.params.id}&apiKey=${process.env.API_KEY}`
-//     )
-//     .then(response => {
-//       const {data} = response
-//       // console.log(data.results[0].id);
-//       axios.get(`https://api.spoonacular.com/recipes/${data.results[0].id}/information?apiKey=${process.env.API_KEY}`)
-//       .then(recipe => {
-//         // const {data} = recipe
-//         // console.log(recipe)
-//         // let recipeFinal = recipe.data
-//         res.render("posts/singlerecipe", {recipeFinal : [recipe.data]})
-//       })
-//       .catch(e=> next(e))
-//     }).catch(e=> next(e))
-// });
 
-// router.post("/post-edit/:id", checker.checkLogin, (req, res) => {
-//   Post.findByIdAndUpdate(
-//     req.params.id,
-//     { $push: { comment: comment._id } },
-//     { new: true }
-//   )
-//     .then(post => {
-//       res.redirect("back");
-//     })
-//     .catch(error => next(error));
-// });
 router.get("/post-edit/:id", checker.checkLogin, (req, res) => {
-  console.log("helloooooooooo")
   Post.findById(req.params.id)
   .then(post=> {
     // res.render("/post/edit", {post})

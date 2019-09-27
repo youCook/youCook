@@ -30,79 +30,77 @@
         display: grid;
         align-content: center; }
   .grid li:nth-child(1) {
-
-    height: 346px; }
+    height: 337px; }
   .grid li:nth-child(2) {
-    height: 573px; }
+    height: 270px; }
   .grid li:nth-child(3) {
-    height: 335px; }
+    height: 236px; }
   .grid li:nth-child(4) {
-    height: 579px; }
+    height: 419px; }
   .grid li:nth-child(5) {
-    height: 303px; }
+    height: 254px; }
   .grid li:nth-child(6) {
-    height: 463px; }
+    height: 331px; }
   .grid li:nth-child(7) {
-    height: 323px; }
+    height: 499px; }
   .grid li:nth-child(8) {
-    height: 241px; }
+    height: 476px; }
   .grid li:nth-child(9) {
-    height: 407px; }
+    height: 318px; }
   .grid li:nth-child(10) {
-    height: 328px; }
+    height: 250px; }
   .grid li:nth-child(11) {
-    height: 246px; }
+    height: 390px; }
   .grid li:nth-child(12) {
-    height: 548px; }
+    height: 275px; }
   .grid li:nth-child(13) {
-    height: 483px; }
+    height: 267px; }
   .grid li:nth-child(14) {
-    height: 523px; }
+    height: 479px; }
   .grid li:nth-child(15) {
-    height: 213px; }
+    height: 581px; }
   .grid li:nth-child(16) {
-    height: 544px; }
+    height: 468px; }
   .grid li:nth-child(17) {
-    height: 376px; }
+    height: 530px; }
   .grid li:nth-child(18) {
-    height: 242px; }
+    height: 329px; }
   .grid li:nth-child(19) {
-    height: 533px; }
+    height: 455px; }
   .grid li:nth-child(20) {
-    height: 415px; }
+    height: 263px; }
   .grid li:nth-child(21) {
-    height: 211px; }
+    height: 476px; }
   .grid li:nth-child(22) {
-    height: 461px; }
+    height: 373px; }
   .grid li:nth-child(23) {
-    height: 231px; }
+    height: 564px; }
   .grid li:nth-child(24) {
-    height: 299px; }
+    height: 543px; }
   .grid li:nth-child(25) {
-    height: 396px; }
+    height: 255px; }
   .grid li:nth-child(26) {
-    height: 492px; }
+    height: 528px; }
   .grid li:nth-child(27) {
-    height: 493px; }
+    height: 368px; }
   .grid li:nth-child(28) {
-    height: 461px; }
+    height: 300px; }
   .grid li:nth-child(29) {
-    height: 282px; }
+    height: 305px; }
   .grid li:nth-child(30) {
-    height: 371px; }
+    height: 594px; }
   .grid li:nth-child(31) {
-    height: 461px; }
+    height: 468px; }
   .grid li:nth-child(32) {
-    height: 534px; }
+    height: 407px; }
   .grid li:nth-child(33) {
-    height: 353px; }
+    height: 379px; }
   .grid li:nth-child(34) {
-    height: 320px; }
+    height: 594px; }
   .grid li:nth-child(35) {
-    height: 593px; }
+    height: 390px; }
   .grid li:nth-child(36) {
-    height: 219px; }
-
+    height: 372px; }
 
 .google-signup-login {
   display: flex;
