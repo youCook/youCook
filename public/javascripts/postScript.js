@@ -1,5 +1,5 @@
 // const backUrl = "http://localhost:3000";
-const backUrl = "https://youcookapp.herokuapp.com/post";
+const backUrl = "https://youcookapp.herokuapp.com";
 const postsContainer = document.querySelector(".profile-posts-container");
 window.onload = () => {
   axios.get(`${backUrl}/post/all`).then(posts => {
