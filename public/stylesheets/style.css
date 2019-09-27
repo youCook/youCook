@@ -30,6 +30,7 @@
         display: grid;
         align-content: center; }
   .grid li:nth-child(1) {
+
     height: 327px; }
   .grid li:nth-child(2) {
     height: 375px; }
@@ -101,6 +102,7 @@
     height: 419px; }
   .grid li:nth-child(36) {
     height: 393px; }
+
 
 .google-signup-login {
   display: flex;
