@@ -1,4 +1,5 @@
-const backUrl = "http://localhost:3000";
+// const backUrl = "http://localhost:3000";
+const backUrl = "https://youcookapp.herokuapp.com/post";
 const apiHandler = new APIHandler();
 const recipeBox = document.querySelector("#plan-container");
 const recipeContainer = document.querySelector("#recipe-plan-container");

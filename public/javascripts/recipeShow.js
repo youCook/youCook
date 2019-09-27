@@ -1,4 +1,5 @@
-const backUrl = "http://localhost:3000";
+// const backUrl = "http://localhost:3000";
+const backUrl = "https://youcookapp.herokuapp.com/post";
 const bookmarksContainer = document.querySelector(".bookmarks-container");
 window.onload = () => {
   let id = document.querySelector(".post-id").value;
