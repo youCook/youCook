@@ -11,7 +11,7 @@ router.get('/profile', secure.checkLogin, (req, res, next) => {
   User.findById(req.user._id)
   .populate('ownPosts')
   .then(user => {
-    console.log(user);
+    // console.log(user);
     res.render('user/profile', { user: user });
   })
 });
