@@ -37,11 +37,11 @@ window.onload = () => {
         <input type="hidden" class="edit-id-link" value="${data.data._id}">
         <input type="submit" class="btn-send-post-edit" value="SAVE">
         </form>
-        // <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data" class="input-form">
-        //   <label>Post photo</label>
-        //   <input type="file" name="picPath">
-        //   <input type="submit" value="SAVE">
-        // </form>
+        <form action="/post/post-edit/update/${data.data._id}" method="post" enctype="multipart/form-data" class="input-form">
+           <label>Post photo</label>
+           <input type="file" name="picPath">
+           <input type="submit" value="SAVE">
+         </form>
       </li>
       `;
               document.querySelector(".btn-send-post-edit").onclick = function(
