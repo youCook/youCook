@@ -22,9 +22,11 @@ window.onload = () => {
     postsBtn.forEach(
       post =>
         (post.onclick = e => {
+
           axios
             .get(`${backUrl}/post/post-edit/${e.target.id}`)
             .then(data => {
+              console.log("helloooooooooooooooo")
               postsContainer.innerHTML = "";
               postsContainer.innerHTML += `
  

@@ -1,4 +1,3 @@
-// console.log(backUrl)
 const backUrl = "http://localhost:3000";
 const likesContainer= document.querySelector(".likes-container");
 let canAddLike= true;
