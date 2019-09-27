@@ -33,7 +33,7 @@ window.onload = () => {
       <li class="edit-post-container border-line">
         <form class="edit-post-inline input-form"id=${data.data._id}>
         <input type="text" name="postName" class="postName" value="${data.data.postName}">
-        <textarea  name="content" class="content" placeholder="${data.data.content}"></textarea>
+        <textarea name="content" class="content" placeholder="${data.data.content}"></textarea>
         <input type="hidden" class="edit-id-link" value="${data.data._id}">
         <input type="submit" class="btn-send-post-edit" value="SAVE">
         </form>

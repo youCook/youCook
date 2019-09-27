@@ -1,9 +1,13 @@
 <div class="top-padding">
-  <h1>Public profile</h1>
+  <h1 class="section-title">Public profile</h1>
 
-
-  <img src="{{user.imgPath}}" alt="Profile img">
-  <br>
-  {{user.username}}
-
+  <div class="flex-col">
+    <div class="user-edit">
+      <img src="{{user.imgPath}}" alt="Profile img">
+    </div>
+    <div class="private-profile">
+      <p>{{user.username}}</p>
+      <q>{{user.description}}</q>
+    </div>
+  </div>
 </div>
