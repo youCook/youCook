@@ -246,7 +246,25 @@ router.get("/show-recipe/:id", (req, res, next) => {
 //     }).catch(e=> next(e))
 // });
 
-
+// router.post("/post-edit/:id", checker.checkLogin, (req, res) => {
+//   Post.findByIdAndUpdate(
+//     req.params.id,
+//     { $push: { comment: comment._id } },
+//     { new: true }
+//   )
+//     .then(post => {
+//       res.redirect("back");
+//     })
+//     .catch(error => next(error));
+// });
+router.get("/post-edit/:id", checker.checkLogin, (req, res) => {
+  console.log("helloooooooooo")
+  Post.findById(req.params.id)
+  .then(post=> {
+    // res.render("/post/edit", {post})
+    res.json(post);
+  })
+});
 
 
 
